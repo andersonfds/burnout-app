@@ -10,7 +10,6 @@ lightTheme() {
   final primaryColor = darkGradientBlue;
   final accentColor = lightGradientBlue;
   final minimumButtonSize = Size(120, 58);
-  final buttonRadius = BorderRadius.circular(12.0);
   final borderWidth = 2.0;
 
   return ThemeData(
@@ -25,21 +24,32 @@ lightTheme() {
       style: TextButton.styleFrom(
         primary: primaryColor,
         minimumSize: minimumButtonSize,
-        shape: RoundedRectangleBorder(borderRadius: buttonRadius),
+        shape: StadiumBorder(),
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         primary: primaryColor,
         minimumSize: minimumButtonSize,
-        shape: RoundedRectangleBorder(borderRadius: buttonRadius),
+        shape: StadiumBorder(),
+      ),
+    ),
+    cardTheme: CardTheme(
+      clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16.0),
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16.0),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         primary: primaryColor,
         minimumSize: minimumButtonSize,
-        shape: RoundedRectangleBorder(borderRadius: buttonRadius),
+        shape: StadiumBorder(),
         side: BorderSide(
           color: primaryColor,
           width: borderWidth,

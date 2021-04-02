@@ -7,4 +7,9 @@ List<GetPage> getPages() => [
         page: () => LoginPage(),
         binding: LoginBindings(),
       ),
+      GetPage(
+        name: 'home',
+        page: () => HomePage(),
+        binding: HomeBindings(),
+      ),
     ];
