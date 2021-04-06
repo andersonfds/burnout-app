@@ -2,22 +2,24 @@ import 'package:flutter/material.dart';
 
 lightTheme() {
   // Color definitions
-  final lightGradientBlue = Color(0xFF05C5C6);
-  final darkGradientBlue = Color(0xFF0092C6);
+  final lightGradientBlue = Color(0xFFFFEA32);
+  final darkGradientBlue = Color(0xFFFFEA32);
   final lightBackground = Color(0xFFEFEFEF);
 
   // Palette definitions
   final primaryColor = darkGradientBlue;
   final accentColor = lightGradientBlue;
-  final minimumButtonSize = Size(120, 58);
+  final minimumButtonSize = Size(120, 50);
   final borderWidth = 2.0;
+  final canvasColor = Color(0xFF151515);
 
   return ThemeData(
     primaryColor: primaryColor,
     primaryColorBrightness: Brightness.light,
     accentColor: accentColor,
     accentColorBrightness: Brightness.light,
-    brightness: Brightness.light,
+    brightness: Brightness.dark,
+    canvasColor: canvasColor,
     backgroundColor: lightBackground,
     fontFamily: 'Poppins',
     textButtonTheme: TextButtonThemeData(
@@ -30,6 +32,7 @@ lightTheme() {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         primary: primaryColor,
+        onPrimary: Colors.black,
         minimumSize: minimumButtonSize,
         shape: StadiumBorder(),
       ),

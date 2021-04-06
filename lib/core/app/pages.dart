@@ -11,5 +11,6 @@ List<GetPage> getPages() => [
         name: 'home',
         page: () => HomePage(),
         binding: HomeBindings(),
+        transition: Transition.fadeIn,
       ),
     ];

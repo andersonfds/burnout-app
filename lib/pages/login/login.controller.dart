@@ -10,7 +10,9 @@ class LoginController extends GetxController {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarBrightness: Brightness.light,
-      statusBarIconBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.light,
+      systemNavigationBarColor: Get.theme?.canvasColor,
+      systemNavigationBarIconBrightness: Brightness.light,
     ));
   }
 }

@@ -1,3 +1,3 @@
 class Environment {
-  static const apiUrl = 'https://app.burnoutsyndrome.com';
+  static const apiUrl = 'http://www.json-generator.com/api/json/get/';
 }

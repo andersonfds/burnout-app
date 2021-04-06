@@ -1,2 +1,2 @@
-export 'home.page.dart';
-export 'home.bindings.dart';
+export 'pages/home.page.dart';
+export 'bindings/home.bindings.dart';
