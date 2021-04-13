@@ -1,3 +1,4 @@
+import 'package:app/core/app/app.bindings.dart';
 import 'package:app/core/app/pages.dart';
 import 'package:app/core/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       getPages: getPages(),
       initialRoute: 'login',
+      initialBinding: AppBindings(),
       debugShowCheckedModeBanner: false,
       theme: lightTheme(),
     );

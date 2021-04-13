@@ -43,7 +43,7 @@ class HomeActivityCard extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: () => Get.toNamed('question/1'),
+                onTap: () => Get.toNamed('activity'),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(

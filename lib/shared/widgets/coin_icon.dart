@@ -5,17 +5,20 @@ import 'package:get/get.dart';
 class CoinIcon extends StatelessWidget {
   final int? coins;
   final Color? color;
+  final MainAxisAlignment mainAxisAlignment;
 
   const CoinIcon({
     Key? key,
     this.coins,
     this.color,
+    this.mainAxisAlignment = MainAxisAlignment.start,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final selectedColor = color ?? Get.theme?.primaryColor;
     return Row(
+      mainAxisAlignment: mainAxisAlignment,
       children: [
         Icon(
           FontAwesome5Solid.coins,
