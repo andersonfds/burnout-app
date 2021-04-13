@@ -22,4 +22,10 @@ class HomeController extends GetxController
         change(null, status: RxStatus.empty());
     });
   }
+
+  onActivityTap(int? id) {
+    if (id != null) {
+      _activityService.triggerActivity(id);
+    }
+  }
 }

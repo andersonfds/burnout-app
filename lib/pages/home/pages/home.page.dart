@@ -24,8 +24,10 @@ class HomePage extends GetView<HomeController> {
               child: controller.obx(
                 (state) => CarouselSlider.builder(
                   options: options,
-                  itemBuilder: (context, index, index2) =>
-                      HomeActivityCard(activity: state![index]),
+                  itemBuilder: (context, index, index2) => HomeActivityCard(
+                    activity: state![index],
+                    onTap: () => controller.onActivityTap(state[index].id),
+                  ),
                   itemCount: state?.length ?? 0,
                 ),
                 onLoading: CarouselSlider.builder(

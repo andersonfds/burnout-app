@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 lightTheme() {
   // Color definitions
@@ -22,6 +23,16 @@ lightTheme() {
     canvasColor: canvasColor,
     backgroundColor: lightBackground,
     fontFamily: 'Poppins',
+    appBarTheme: AppBarTheme(
+      elevation: 0,
+      centerTitle: true,
+      backgroundColor: Colors.transparent,
+      brightness: Brightness.dark,
+      iconTheme: IconThemeData(
+        color: Colors.white,
+      ),
+      textTheme: Get.textTheme,
+    ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         primary: primaryColor,

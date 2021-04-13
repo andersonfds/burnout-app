@@ -19,13 +19,11 @@ class AuthRepository extends NetworkRepository<AuthModel>
 
   @override
   Future<AuthModel?> refresh(String? token) {
-    // TODO: implement refresh
     throw UnimplementedError();
   }
 
   @override
   Future<AuthModel?> restore() {
-    // TODO: implement restore
     throw UnimplementedError();
   }
 }

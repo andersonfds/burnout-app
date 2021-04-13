@@ -22,6 +22,20 @@ List<GetPage> getPages() => [
         page: () => ActivityPage(),
         binding: ActivityBindings(),
         curve: Curves.ease,
-        transition: Transition.rightToLeft,
+        transition: Transition.fadeIn,
+      ),
+      GetPage(
+        name: 'activity/yesNo',
+        page: () => ActivityYesNo(),
+        binding: ActivityYesNoBindings(),
+        curve: Curves.easeIn,
+        transition: Transition.fadeIn,
+      ),
+      GetPage(
+        name: 'activity/image',
+        page: () => ActivityImagePage(),
+        // binding: ActivityYesNoBindings(),
+        curve: Curves.easeIn,
+        transition: Transition.fadeIn,
       ),
     ];

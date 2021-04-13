@@ -6,10 +6,12 @@ import 'package:get/get.dart';
 
 class HomeActivityCard extends StatelessWidget {
   final ActivityModel activity;
+  final VoidCallback? onTap;
 
   const HomeActivityCard({
     Key? key,
     required this.activity,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -43,7 +45,7 @@ class HomeActivityCard extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: () => Get.toNamed('activity'),
+                onTap: onTap,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
