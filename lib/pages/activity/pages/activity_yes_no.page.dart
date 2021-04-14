@@ -1,24 +1,24 @@
-import 'package:app/core/models/simple_question.model.dart';
+import 'package:app/core/models/activity/yes_no.activity.model.dart';
 import 'package:app/shared/services/services.dart';
 import 'package:app/shared/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ActivityYesNo extends StatefulWidget {
+class ActivityYesNoPage extends StatefulWidget {
   @override
-  _ActivityYesNoState createState() => _ActivityYesNoState();
+  _ActivityYesNoPageState createState() => _ActivityYesNoPageState();
 }
 
-class _ActivityYesNoState extends State<ActivityYesNo> {
+class _ActivityYesNoPageState extends State<ActivityYesNoPage> {
   IActivityService _activityService = Get.find();
-  SimpleQuestionModel? _questionModel;
+  YesNoActivityModel? _questionModel;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     final settings = ModalRoute.of(context)?.settings.arguments;
 
-    if (settings is SimpleQuestionModel?) {
+    if (settings is YesNoActivityModel?) {
       _questionModel = settings;
     }
 
@@ -64,10 +64,13 @@ class _ActivityYesNoState extends State<ActivityYesNo> {
                 ),
                 SizedBox(width: 10),
                 Expanded(
-                  child: ElevatedButton(
-                    onPressed: () => _activityService
-                        .triggerActivity(_questionModel?.goNext ?? 0),
-                    child: Text('Sim'),
+                  child: Hero(
+                    tag: 'primary_button',
+                    child: ElevatedButton(
+                      onPressed: () => _activityService
+                          .triggerActivity(_questionModel?.goNext ?? 0),
+                      child: Text('Sim'),
+                    ),
                   ),
                 ),
               ],

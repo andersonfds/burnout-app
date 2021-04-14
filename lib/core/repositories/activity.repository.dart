@@ -1,5 +1,6 @@
 import 'package:app/core/models/models.dart';
-import 'package:app/core/models/simple_question.model.dart';
+import 'package:app/core/models/activity/selection.activity.model.dart';
+import 'package:app/core/models/activity/yes_no.activity.model.dart';
 import 'package:app/shared/repositories/repositories.dart';
 
 import 'base/network.repository.dart';
@@ -12,7 +13,7 @@ class ActivityRepository extends NetworkRepository<ActivityModel>
     return List.generate(
       10,
       (index) => ActivityModel(
-        id: 123,
+        id: index + 1,
         flag: 'Conhecimento',
         price: (index + 1) * 20,
         unlockPrice: index % 2 == 0 ? null : 300,
@@ -29,22 +30,28 @@ class ActivityRepository extends NetworkRepository<ActivityModel>
 
     return ActivityList(
       values: [
-        SimpleQuestionModel(
-          id: 123,
+        YesNoActivityModel(
+          id: 1,
           title: 'Lorem ipsum dolor sit amet yay',
           description: 'This is the first page',
-          goNext: 12333,
+          goNext: 2,
         ),
-        ImageQuestionModel(
-          id: 12333,
+        ImageActivityModel(
+          id: 2,
           title: 'atividade de imaegm',
           description: 'atividade 2 com id 345',
-          goNext: 345,
+          goNext: 3,
         ),
-        SimpleQuestionModel(
-          id: 345,
-          title: 'Second activity is rocking!',
-          description: 'atividade 2 com id 345',
+        SelectionActivityModel(
+          id: 3,
+          goNext: 4,
+        ),
+        TextActivityModel(
+          id: 4,
+          goNext: 5,
+        ),
+        WinnerActivityModel(
+          id: 5,
           goNext: null,
         ),
       ],

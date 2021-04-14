@@ -1,12 +1,11 @@
-import 'package:app/core/models/activity_enum.dart';
 import 'package:app/core/models/base/activity_base.dart';
 import 'package:app/core/models/base/base.model.dart';
 
-class ImageQuestionModel with BaseModel, ActivityBase {
+class TextActivityModel with BaseModel, ActivityBase {
   String? title;
   String? description;
 
-  ImageQuestionModel({
+  TextActivityModel({
     int? id,
     this.title,
     this.description,
@@ -17,8 +16,5 @@ class ImageQuestionModel with BaseModel, ActivityBase {
   }
 
   @override
-  ActivityEnum activityType = ActivityEnum.yesNoQuestion;
-
-  @override
-  String startPage = 'activity/image';
+  String startPage = 'activity/text';
 }

@@ -18,15 +18,8 @@ List<GetPage> getPages() => [
         transition: Transition.fadeIn,
       ),
       GetPage(
-        name: 'activity',
-        page: () => ActivityPage(),
-        binding: ActivityBindings(),
-        curve: Curves.ease,
-        transition: Transition.fadeIn,
-      ),
-      GetPage(
         name: 'activity/yesNo',
-        page: () => ActivityYesNo(),
+        page: () => ActivityYesNoPage(),
         binding: ActivityYesNoBindings(),
         curve: Curves.easeIn,
         transition: Transition.fadeIn,
@@ -34,7 +27,24 @@ List<GetPage> getPages() => [
       GetPage(
         name: 'activity/image',
         page: () => ActivityImagePage(),
-        // binding: ActivityYesNoBindings(),
+        curve: Curves.easeIn,
+        transition: Transition.fadeIn,
+      ),
+      GetPage(
+        name: 'activity/selection',
+        page: () => ActivitySelectionPage(),
+        curve: Curves.easeIn,
+        transition: Transition.fadeIn,
+      ),
+      GetPage(
+        name: 'activity/winner',
+        page: () => ActivityWinnerPage(),
+        curve: Curves.easeIn,
+        transition: Transition.fadeIn,
+      ),
+      GetPage(
+        name: 'activity/text',
+        page: () => ActivityTextPage(),
         curve: Curves.easeIn,
         transition: Transition.fadeIn,
       ),

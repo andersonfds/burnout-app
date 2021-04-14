@@ -1,7 +1,7 @@
 import 'package:app/core/models/base/activity_base.dart';
 
 class ActivityList {
-  final List<ActivityBase>? values;
+  final List<ActivityBase?>? values;
 
   ActivityList({this.values});
 

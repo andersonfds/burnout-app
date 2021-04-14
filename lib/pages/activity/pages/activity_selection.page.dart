@@ -1,24 +1,25 @@
 import 'package:app/core/models/models.dart';
+import 'package:app/pages/activity/widgets/widgets.dart';
 import 'package:app/shared/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ActivityImagePage extends StatefulWidget {
+class ActivitySelectionPage extends StatefulWidget {
   @override
-  _ActivityImagePageState createState() => _ActivityImagePageState();
+  _ActivitySelectionPageState createState() => _ActivitySelectionPageState();
 }
 
-class _ActivityImagePageState extends State<ActivityImagePage> {
+class _ActivitySelectionPageState extends State<ActivitySelectionPage> {
   IActivityService _activityService = Get.find();
-  ImageActivityModel? _questionModel;
+  SelectionActivityModel? _selectionModel;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     final settings = ModalRoute.of(context)?.settings.arguments;
 
-    if (settings is ImageActivityModel?) {
-      _questionModel = settings;
+    if (settings is SelectionActivityModel?) {
+      _selectionModel = settings;
     }
 
     setState(() {});
@@ -32,12 +33,12 @@ class _ActivityImagePageState extends State<ActivityImagePage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            child: Center(
-              child: AspectRatio(
-                aspectRatio: 1,
-                child: Image.network(
-                  'https://picsum.photos/200',
-                  fit: BoxFit.cover,
+            child: ListView.builder(
+              padding: const EdgeInsets.all(16.0),
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 6.0),
+                child: ActivityTile(
+                  selected: index <= 4,
                 ),
               ),
             ),
@@ -47,8 +48,8 @@ class _ActivityImagePageState extends State<ActivityImagePage> {
             child: Hero(
               tag: 'primary_button',
               child: ElevatedButton(
-                onPressed: () => _activityService
-                    .triggerActivity(_questionModel?.goNext ?? 0),
+                onPressed: () =>
+                    _activityService.triggerActivity(_selectionModel?.goNext),
                 child: Text('Continuar'),
               ),
             ),

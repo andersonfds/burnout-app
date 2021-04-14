@@ -7,5 +7,5 @@ abstract class IActivityService {
   /// downloads the activity
   Future<ActivityList?> downloadActivity();
 
-  Future<void> triggerActivity(int id);
+  Future<void> triggerActivity(int? id);
 }

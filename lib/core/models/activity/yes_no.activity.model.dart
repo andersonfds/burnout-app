@@ -1,12 +1,11 @@
-import 'package:app/core/models/activity_enum.dart';
 import 'package:app/core/models/base/activity_base.dart';
 import 'package:app/core/models/base/base.model.dart';
 
-class SimpleQuestionModel with BaseModel, ActivityBase {
+class YesNoActivityModel with BaseModel, ActivityBase {
   String? title;
   String? description;
 
-  SimpleQuestionModel({
+  YesNoActivityModel({
     int? id,
     this.title,
     this.description,
@@ -15,9 +14,6 @@ class SimpleQuestionModel with BaseModel, ActivityBase {
     this.goNext = goNext;
     this.id = id;
   }
-
-  @override
-  ActivityEnum activityType = ActivityEnum.yesNoQuestion;
 
   @override
   String startPage = 'activity/yesNo';

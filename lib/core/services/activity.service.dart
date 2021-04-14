@@ -1,5 +1,5 @@
-import 'package:app/core/models/activity.model.dart';
-import 'package:app/core/models/activity_list.dart';
+import 'package:app/core/models/activity/activity.model.dart';
+import 'package:app/core/models/activity/activity_list.dart';
 import 'package:app/shared/repositories/iactivity.repository.dart';
 import 'package:app/shared/services/services.dart';
 import 'package:get/get.dart';
@@ -20,10 +20,12 @@ class ActivityService extends BaseService implements IActivityService {
   }
 
   @override
-  Future<void> triggerActivity(int id) async {
+  Future<void> triggerActivity(int? id) async {
+    if (id == null) return;
     final activity = await downloadActivity();
-    final first = activity?.values?.firstWhere((e) => e.id == id);
-    if (first?.startPage != null) {
+    final first =
+        activity?.values?.firstWhere((e) => e?.id == id, orElse: () => null);
+    if (first?.startPage.isNotEmpty == true) {
       Get.offNamedUntil(
         first!.startPage,
         (route) => route.settings.name == 'home',
