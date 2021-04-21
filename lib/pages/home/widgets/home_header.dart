@@ -1,12 +1,13 @@
+import 'package:app/core/models/user.model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeHeader extends StatelessWidget {
-  final String name;
+  final UserModel? user;
 
   const HomeHeader({
     Key? key,
-    required this.name,
+    this.user,
   }) : super(key: key);
 
   @override
@@ -18,7 +19,7 @@ class HomeHeader extends StatelessWidget {
         children: [
           Expanded(
             child: Text(
-              'Olá, $name',
+              'Olá, ${user?.firstName}',
               style: Get.textTheme?.headline5?.apply(
                 color: Get.theme?.primaryColor,
               ),
@@ -27,7 +28,7 @@ class HomeHeader extends StatelessWidget {
           ),
           CircleAvatar(
             backgroundColor: Get.theme?.primaryColor,
-            child: Text(name[0]),
+            child: Text('${user?.initials}'),
           ),
         ],
       ),

@@ -19,7 +19,7 @@ class HomePage extends GetView<HomeController> {
       body: SafeArea(
         child: Column(
           children: [
-            HomeHeader(name: 'Anderson'),
+            Obx(() => HomeHeader(user: controller.user.value?.user)),
             Expanded(
               child: controller.obx(
                 (state) => CarouselSlider.builder(

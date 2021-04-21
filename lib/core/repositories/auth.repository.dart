@@ -23,9 +23,9 @@ class AuthRepository extends NetworkRepository<AuthModel>
     final response =
         await httpClient.post('auth/session', body: authDto.asMap());
 
-    if (response.isOk) {
+    if (response.isOk)
+      // if success return the object
       return Right(decoder(response.body));
-    }
 
     return Left(ValidationModel().fill(response.body));
   }

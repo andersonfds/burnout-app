@@ -8,4 +8,8 @@ abstract class IAuthService {
   /// identifier and password
   Future<Either<ValidationModel, AuthModel?>> authenticate(
       CreateAuthDto authDto);
+
+  /// Gets the current logged in userr
+  /// null if there's none
+  AuthModel? getCurrentUser();
 }
