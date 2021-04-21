@@ -1,3 +1,3 @@
 class Environment {
-  static const apiUrl = 'http://www.json-generator.com/api/json/get/';
+  static const apiUrl = 'https://bsyndrome.herokuapp.com/v1/';
 }

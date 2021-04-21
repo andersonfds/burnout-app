@@ -1,2 +1,2 @@
-export 'login.page.dart';
-export 'login.bindings.dart';
+export 'pages/login.page.dart';
+export 'bindings/login.bindings.dart';

@@ -20,7 +20,7 @@ abstract class NetworkRepository<T extends BaseModel> extends GetConnect {
   /// Creates a Network Repository
   NetworkRepository({this.apiUrl}) {
     httpClient.baseUrl = apiUrl;
-    httpClient.defaultDecoder = decoder;
+    // httpClient.defaultDecoder = decoder;
   }
 
   /// This will decode the response into a model
