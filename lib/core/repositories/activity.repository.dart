@@ -9,7 +9,6 @@ class ActivityRepository extends NetworkRepository<ActivityModel>
     implements IActivityRepository {
   @override
   Future<List<ActivityModel>?> getAll() async {
-    await Future.delayed(Duration(seconds: 1), () {});
     return List.generate(
       10,
       (index) => ActivityModel(

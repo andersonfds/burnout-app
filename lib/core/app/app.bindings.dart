@@ -19,5 +19,6 @@ class AppBindings extends Bindings {
     // Services
     Get.lazyPut<IActivityService>(() => ActivityService());
     Get.lazyPut<IAuthService>(() => AuthService());
+    Get.lazyPut<IUserService>(() => UserService());
   }
 }

@@ -48,26 +48,30 @@ class LoginPage extends GetView<LoginController> {
                           ),
                           SizedBox(height: 10),
                           TextFormField(
-                            autovalidateMode: AutovalidateMode.always,
-                            validator: controller.emailError,
                             textInputAction: TextInputAction.next,
                             onChanged: (value) => controller.authDto
                                 .update((val) => val?.identifier = value),
                             decoration: InputDecoration(
                               labelText: 'E-mail',
                               hintText: 'voce@exemplo.com',
+                              errorText: controller.emailError(),
                             ),
                           ),
                           SizedBox(height: 10),
                           TextFormField(
-                            autovalidateMode: AutovalidateMode.always,
-                            validator: controller.passwordError,
                             onChanged: (value) => controller.authDto
                                 .update((val) => val?.password = value),
                             obscureText: true,
                             textInputAction: TextInputAction.done,
                             decoration: InputDecoration(
                               labelText: 'Senha',
+                              errorText: controller.passwordError(),
+                              suffixIcon: IconButton(
+                                icon: Icon(controller.obscureText.value
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
+                                onPressed: controller.changePasswordVisibility,
+                              ),
                             ),
                           ),
                           SizedBox(height: 10),
@@ -88,7 +92,7 @@ class LoginPage extends GetView<LoginController> {
                           ),
                           SizedBox(height: 10),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () => Get.toNamed('signup'),
                             child: Text('Ainda não tem conta? Cadastre-se'),
                           ),
                         ],

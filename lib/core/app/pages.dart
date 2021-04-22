@@ -18,6 +18,13 @@ List<GetPage> getPages() => [
         transition: Transition.fadeIn,
       ),
       GetPage(
+        name: 'signup',
+        page: () => SignupPage(),
+        binding: SignupBindings(),
+        curve: Curves.ease,
+        transition: Transition.rightToLeftWithFade,
+      ),
+      GetPage(
         name: 'activity/yesNo',
         page: () => ActivityYesNoPage(),
         binding: ActivityYesNoBindings(),

@@ -1,20 +1,26 @@
 import 'package:app/core/config/environment.dart';
+import 'package:app/core/models/user.model.dart';
 import 'package:app/core/models/validation.model.dart';
 import 'package:app/core/models/dto/create_user.dto.dart';
 import 'package:app/core/models/base/base.model.dart';
 import 'package:app/core/repositories/base/network.repository.dart';
 import 'package:app/shared/repositories/iuser.repository.dart';
+import 'package:dartz/dartz.dart';
 
 class UserRepository extends NetworkRepository implements IUserRepository {
   UserRepository() : super(apiUrl: Environment.apiUrl);
 
   @override
-  Future<ValidationModel> create(CreateUserDto user) async {
+  Future<Either<ValidationModel, UserModel>> create(CreateUserDto user) async {
     final response = await httpClient.post('user', body: user.asMap());
 
-    return response.body;
+    if (response.isOk) {
+      return Right(decoder(response.body));
+    }
+
+    return Left(ValidationModel().fill(response.body));
   }
 
   @override
-  BaseModel get model => ValidationModel();
+  BaseModel get model => UserModel();
 }

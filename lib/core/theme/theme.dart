@@ -22,16 +22,23 @@ lightTheme() {
     brightness: Brightness.dark,
     canvasColor: canvasColor,
     backgroundColor: lightBackground,
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: primaryColor,
+      selectionColor: primaryColor.withOpacity(0.3),
+      selectionHandleColor: primaryColor,
+    ),
     fontFamily: 'Poppins',
     appBarTheme: AppBarTheme(
       elevation: 0,
       centerTitle: true,
-      backgroundColor: Colors.transparent,
       brightness: Brightness.dark,
       iconTheme: IconThemeData(
         color: Colors.white,
       ),
-      textTheme: Get.textTheme,
+      textTheme: Get.textTheme?.apply(
+        bodyColor: Colors.white,
+      ),
+      color: canvasColor,
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(

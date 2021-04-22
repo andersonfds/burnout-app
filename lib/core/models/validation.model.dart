@@ -30,9 +30,9 @@ class ValidationModel with BaseModel {
     this.errors,
   });
 
-  ValidationItem? getError(String key) {
+  String? getFirstError(String key) {
     final output = errors?.firstWhereOrNull((e) => e.property == key);
-    return output;
+    return output?.value?.first;
   }
 
   @override

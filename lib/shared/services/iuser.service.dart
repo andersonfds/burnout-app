@@ -3,6 +3,6 @@ import 'package:app/core/models/user.model.dart';
 import 'package:app/core/models/validation.model.dart';
 import 'package:dartz/dartz.dart';
 
-abstract class IUserRepository {
+abstract class IUserService {
   Future<Either<ValidationModel, UserModel>> create(CreateUserDto user);
 }

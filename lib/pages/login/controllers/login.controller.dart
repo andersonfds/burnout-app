@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 class LoginController extends GetxController {
   Rx<CreateAuthDto> authDto = Rx(CreateAuthDto());
   RxBool isLoading = false.obs;
+  RxBool obscureText = true.obs;
   Rx<ValidationModel?> errors = Rx(null);
   final IAuthService _authService = Get.find();
 
@@ -25,11 +26,13 @@ class LoginController extends GetxController {
     ));
   }
 
-  String? emailError(String? input) =>
-      errors.value?.getError('identifier')?.value?.first;
+  String? emailError() => errors.value?.getFirstError('identifier');
 
-  String? passwordError(String? input) =>
-      errors.value?.getError('password')?.value?.first;
+  String? passwordError() => errors.value?.getFirstError('password');
+
+  changePasswordVisibility() {
+    obscureText.value = !obscureText.value;
+  }
 
   onError(ValidationModel validation) {
     errors.value = validation;
