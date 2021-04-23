@@ -15,7 +15,9 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: HomeBottomActions(),
+      bottomNavigationBar: Obx(
+        () => HomeBottomActions(coins: controller.coins.value ?? 0),
+      ),
       body: SafeArea(
         child: Column(
           children: [

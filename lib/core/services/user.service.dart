@@ -14,4 +14,9 @@ class UserService extends BaseService implements IUserService {
   Future<Either<ValidationModel, UserModel>> create(CreateUserDto user) {
     return _userRepository.create(user);
   }
+
+  @override
+  Future<int?> getBalance() {
+    return _userRepository.getBalance();
+  }
 }

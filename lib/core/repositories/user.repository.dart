@@ -23,4 +23,11 @@ class UserRepository extends NetworkRepository implements IUserRepository {
 
   @override
   BaseModel get model => UserModel();
+
+  @override
+  Future<int?> getBalance() async {
+    final response = await httpClient.get('user/balance');
+    if (response.isOk) return int.tryParse(response.body);
+    return null;
+  }
 }

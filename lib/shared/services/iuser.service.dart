@@ -5,4 +5,6 @@ import 'package:dartz/dartz.dart';
 
 abstract class IUserService {
   Future<Either<ValidationModel, UserModel>> create(CreateUserDto user);
+
+  Future<int?> getBalance();
 }
