@@ -8,7 +8,12 @@ class SignupPage extends GetView<SignupController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cadastro'),
+        title: Text(
+          'Cadastro',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -52,6 +57,7 @@ class SignupPage extends GetView<SignupController> {
               ),
               ObxValue<Rx<ValidationModel?>>(
                 (state) => TextFormField(
+                  keyboardType: TextInputType.emailAddress,
                   onChanged: (v) =>
                       controller.userDto.update((val) => val?.email = v),
                   decoration: InputDecoration(

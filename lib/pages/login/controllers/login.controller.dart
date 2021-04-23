@@ -40,7 +40,7 @@ class LoginController extends GetxController {
   }
 
   onSuccess(AuthModel? auth) {
-    Get.toNamed('home');
+    Get.offAllNamed('home');
   }
 
   onLogin() async {

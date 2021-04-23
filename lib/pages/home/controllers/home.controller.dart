@@ -30,6 +30,8 @@ class HomeController extends GetxController
         change(value, status: RxStatus.success());
       else
         change(null, status: RxStatus.empty());
+    }).catchError((e) {
+      change(null, status: RxStatus.error());
     });
   }
 

@@ -15,7 +15,7 @@ class UserRepository extends NetworkRepository implements IUserRepository {
     final response = await httpClient.post('user', body: user.asMap());
 
     if (response.isOk) {
-      return Right(decoder(response.body));
+      return Right(UserModel().fill(response.body));
     }
 
     return Left(ValidationModel().fill(response.body));

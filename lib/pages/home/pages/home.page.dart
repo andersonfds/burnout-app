@@ -26,7 +26,7 @@ class HomePage extends GetView<HomeController> {
                   options: options,
                   itemBuilder: (context, index, index2) => HomeActivityCard(
                     activity: state![index],
-                    onTap: () => controller.onActivityTap(state[index].id),
+                    onTap: () => controller.onActivityTap(1),
                   ),
                   itemCount: state?.length ?? 0,
                 ),

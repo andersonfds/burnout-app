@@ -25,7 +25,7 @@ class AuthRepository extends NetworkRepository<AuthModel>
 
     if (response.isOk)
       // if success return the object
-      return Right(decoder(response.body));
+      return Right(AuthModel().fill(response.body));
 
     return Left(ValidationModel().fill(response.body));
   }

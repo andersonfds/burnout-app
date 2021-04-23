@@ -13,26 +13,29 @@ class HomeBottomActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: Container(
-        decoration: BoxDecoration(),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [CoinIcon(coins: coins)],
+    return SafeArea(
+      top: false,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        child: Container(
+          decoration: BoxDecoration(),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [CoinIcon(coins: coins)],
+                ),
               ),
-            ),
-            Expanded(
-              child: ElevatedButton(
-                onPressed: onPlay,
-                child: Text('Jogar'),
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: onPlay,
+                  child: Text('Jogar'),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -1,7 +1,15 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:app/core/models/base/base.model.dart';
+import 'package:app/core/models/models.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/request/request.dart';
+import 'package:get_storage/get_storage.dart';
 
 abstract class NetworkRepository<T extends BaseModel> extends GetConnect {
+  final GetStorage _box = Get.find();
+
   /// The API base URL, if set to `null` it will
   /// automatically pick from config folder
   ///
@@ -20,16 +28,17 @@ abstract class NetworkRepository<T extends BaseModel> extends GetConnect {
   /// Creates a Network Repository
   NetworkRepository({this.apiUrl}) {
     httpClient.baseUrl = apiUrl;
-    // httpClient.defaultDecoder = decoder;
+    httpClient.addRequestModifier<Object?>(requestModifier);
+    httpClient.defaultDecoder = (value) => value;
   }
 
-  /// This will decode the response into a model
-  dynamic decoder(dynamic data) {
-    if (data is List)
-      // if its a list decoding as list
-      return data.map((json) => model.fill(json)).toList();
+  FutureOr<Request<Object?>> requestModifier(Request<Object?> request) {
+    final AuthModel? auth = AuthModel().fill(_box.read('user'));
 
-    // otherwise decoding as item
-    return model.fill(data);
+    request.headers.addAll({
+      HttpHeaders.authorizationHeader: 'Bearer ${auth?.token}',
+    });
+
+    return request;
   }
 }

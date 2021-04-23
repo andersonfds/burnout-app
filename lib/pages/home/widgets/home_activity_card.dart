@@ -28,7 +28,7 @@ class HomeActivityCard extends StatelessWidget {
                   'https://picsum.photos/seed/${activity.levelName}/600/600'),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(activity.locked ? 0.7 : 0.3),
+                Colors.black.withOpacity(activity.unlocked != true ? 0.7 : 0.3),
                 BlendMode.darken,
               ),
             ),
@@ -99,7 +99,7 @@ class HomeActivityCard extends StatelessWidget {
               Align(
                 alignment: Alignment.center,
                 child: Visibility(
-                  visible: activity.locked,
+                  visible: activity.unlocked != true,
                   child: Icon(
                     AntDesign.lock,
                     size: 42,

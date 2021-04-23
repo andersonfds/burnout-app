@@ -49,6 +49,7 @@ class LoginPage extends GetView<LoginController> {
                           SizedBox(height: 10),
                           TextFormField(
                             textInputAction: TextInputAction.next,
+                            keyboardType: TextInputType.emailAddress,
                             onChanged: (value) => controller.authDto
                                 .update((val) => val?.identifier = value),
                             decoration: InputDecoration(

@@ -1,7 +1,7 @@
 import 'package:app/core/models/base/base.model.dart';
 
 class ActivityModel with BaseModel {
-  int? id;
+  String? id;
   int? price;
   int? unlockPrice;
   String? levelName;
@@ -9,7 +9,7 @@ class ActivityModel with BaseModel {
   String? flag;
   String? description;
   String? thumbnail;
-  bool locked;
+  bool unlocked;
 
   ActivityModel({
     this.id,
@@ -20,6 +20,22 @@ class ActivityModel with BaseModel {
     this.flag,
     this.description,
     this.thumbnail,
-    this.locked = true,
+    this.unlocked = true,
   });
+
+  @override
+  ActivityModel fill(dynamic json) {
+    super.fill(json);
+    return ActivityModel(
+      id: json['id'],
+      unlocked: json['unlocked'],
+      description: json['description'],
+      name: json['title'],
+      levelName: json['levelName'],
+      flag: json['levelTag'],
+      thumbnail: json['thumbnail'],
+      unlockPrice: int.tryParse(json['unlockPrice']),
+      price: int.tryParse(json['price']),
+    );
+  }
 }

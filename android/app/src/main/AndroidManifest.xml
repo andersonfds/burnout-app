@@ -2,7 +2,7 @@
     package="br.edu.fatecrp.burnout.app">
    <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="app"
+        android:label="Burnout"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
