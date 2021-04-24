@@ -1,3 +1,4 @@
+import 'package:app/core/models/base/activity_base.dart';
 import 'package:app/core/models/models.dart';
 
 abstract class IActivityService {
@@ -5,7 +6,11 @@ abstract class IActivityService {
   Future<List<ActivityModel>?> getAll();
 
   /// downloads the activity
-  Future<ActivityList?> downloadActivity();
+  Future<StepList?> downloadActivity(String? id);
 
-  Future<void> triggerActivity(int? id);
+  Future<void> next(StepBase? current);
+
+  Future<void> handleAction(StepBase step);
+
+  Future<void> startActivity(String? id);
 }

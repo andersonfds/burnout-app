@@ -48,8 +48,7 @@ class _ActivitySelectionPageState extends State<ActivitySelectionPage> {
             child: Hero(
               tag: 'primary_button',
               child: ElevatedButton(
-                onPressed: () =>
-                    _activityService.triggerActivity(_selectionModel?.goNext),
+                onPressed: () => null,
                 child: Text('Continuar'),
               ),
             ),

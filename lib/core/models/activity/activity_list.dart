@@ -1,9 +1,27 @@
+import 'package:app/core/models/activity/text.activity.model.dart';
 import 'package:app/core/models/base/activity_base.dart';
 
-class ActivityList {
-  final List<ActivityBase?>? values;
+class StepList {
+  final String? id;
+  final List<StepBase?>? values;
 
-  ActivityList({this.values});
+  StepList({this.values, this.id});
 
-  ActivityBase? get first => values?.first;
+  factory StepList.fromJson(String? id, dynamic json) {
+    List<StepBase?> values =
+        (json as List).map<StepBase?>((e) => getForType(e)).toList();
+    return StepList(id: id, values: values);
+  }
+
+  static StepBase? getForType(dynamic json) {
+    final content = json['content'];
+    switch (json['type']) {
+      case 'text':
+        return TextActivityModel().fill(content);
+      default:
+        return null;
+    }
+  }
+
+  StepBase? get first => values?.first;
 }

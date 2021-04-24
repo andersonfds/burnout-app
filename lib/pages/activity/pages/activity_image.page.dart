@@ -47,8 +47,7 @@ class _ActivityImagePageState extends State<ActivityImagePage> {
             child: Hero(
               tag: 'primary_button',
               child: ElevatedButton(
-                onPressed: () => _activityService
-                    .triggerActivity(_questionModel?.goNext ?? 0),
+                onPressed: null,
                 child: Text('Continuar'),
               ),
             ),

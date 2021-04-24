@@ -6,5 +6,5 @@ abstract class IActivityRepository {
   Future<List<ActivityModel>?> getAll();
 
   /// downloads the activity
-  Future<ActivityList?> downloadActivity();
+  Future<StepList?> downloadActivity(String? activityId);
 }

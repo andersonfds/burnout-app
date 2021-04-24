@@ -6,17 +6,26 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomePage extends GetView<HomeController> {
-  final CarouselOptions options = CarouselOptions(
-    viewportFraction: 3 / 4,
-    height: double.infinity,
-    enlargeCenterPage: true,
-  );
+  getOptions(
+          [dynamic Function(int, CarouselPageChangedReason)? onPageChanged]) =>
+      CarouselOptions(
+        viewportFraction: 3 / 4,
+        height: double.infinity,
+        enlargeCenterPage: true,
+        onPageChanged: onPageChanged,
+      );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: Obx(
-        () => HomeBottomActions(coins: controller.coins.value ?? 0),
+        () => HomeBottomActions(
+          coins: controller.coins.value ?? 0,
+          onUnlock: () {},
+          onPlay: controller.selected.value?.unlocked == true
+              ? controller.onActivityTap
+              : null,
+        ),
       ),
       body: SafeArea(
         child: Column(
@@ -25,15 +34,17 @@ class HomePage extends GetView<HomeController> {
             Expanded(
               child: controller.obx(
                 (state) => CarouselSlider.builder(
-                  options: options,
+                  options: getOptions((index, reason) {
+                    controller.selected.value = state?[index];
+                  }),
+                  itemCount: state?.length ?? 0,
                   itemBuilder: (context, index, index2) => HomeActivityCard(
                     activity: state![index],
-                    onTap: () => controller.onActivityTap(1),
+                    onTap: () => controller.onActivityTap,
                   ),
-                  itemCount: state?.length ?? 0,
                 ),
                 onLoading: CarouselSlider.builder(
-                  options: options,
+                  options: getOptions(),
                   itemBuilder: (context, index, index2) =>
                       HomeActivityScaffoldCard(),
                   itemCount: 1,

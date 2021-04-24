@@ -11,6 +11,7 @@ class HomeController extends GetxController
     with StateMixin<List<ActivityModel>?>, MessagingChannel {
   // constants
   static const moneyValueChanged = 'MONEY_VALUE_CHANGED';
+  static const homeShouldRefresh = 'HOME_SHOULD_REFRESH';
 
   // services
   IActivityService _activityService = Get.find();
@@ -20,6 +21,7 @@ class HomeController extends GetxController
 
   // observables
   Rx<AuthModel?> user = Rx(null);
+  Rx<ActivityModel?> selected = Rx(null);
   Rx<int?> coins = 0.obs;
 
   @override
@@ -28,7 +30,7 @@ class HomeController extends GetxController
     loadBalance();
     change(null, status: RxStatus.error());
     getCurrentUser();
-    setKeys([moneyValueChanged]);
+    setKeys([moneyValueChanged, homeShouldRefresh]);
     startListening();
   }
 
@@ -59,9 +61,10 @@ class HomeController extends GetxController
     });
   }
 
-  onActivityTap(int? id) {
-    if (id != null) {
-      _activityService.triggerActivity(id);
+  onActivityTap() {
+    final activity = selected.value;
+    if (activity?.unlocked == true) {
+      _activityService.startActivity(activity?.id);
     }
   }
 
@@ -74,6 +77,8 @@ class HomeController extends GetxController
     switch (channel) {
       case moneyValueChanged:
         return updateMoney(data.toString());
+      case homeShouldRefresh:
+        return loadActivities();
     }
   }
 }

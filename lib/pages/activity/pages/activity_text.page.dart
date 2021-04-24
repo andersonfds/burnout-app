@@ -1,6 +1,7 @@
 import 'package:app/core/models/models.dart';
 import 'package:app/shared/services/services.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:get/get.dart';
 
 class ActivityTextPage extends StatefulWidget {
@@ -28,35 +29,59 @@ class _ActivityTextPageState extends State<ActivityTextPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: Text(
-                  'lotrm dkslad ak dsamkl dalkdmldksa lsmaklsaklsd maskld alkmsd kla\n\ndaklms daslkd aklm askld smklskm lda kldaskl \n\n daskl mdasmkldasklm das mkld aklmmk ldasmkl daklmskm lda kldaskl \n\n daskl mdasmkldasklm das mkld aklmmk ldasmkl daklmskm lda kldaskl \n\n daskl mdasmkldasklm das mkld aklmmk ldasmkl daklm damkldamkld',
-                  style: Get.textTheme?.subtitle1?.copyWith(
-                    height: 3.5,
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: Markdown(
+                data: _textModel?.description ?? '',
+                styleSheet:
+                    MarkdownStyleSheet.fromTheme(Get.theme ?? ThemeData())
+                        .copyWith(
+                  blockquoteDecoration: BoxDecoration(
+                    color: Colors.white10,
+                    border: Border(
+                      left: BorderSide(color: Colors.white38, width: 4),
+                    ),
                   ),
-                  textAlign: TextAlign.center,
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Hero(
-              tag: 'primary_button',
-              child: ElevatedButton(
-                onPressed: () =>
-                    _activityService.triggerActivity(_textModel?.goNext),
-                child: Text('Continuar'),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Visibility(
+                    visible: _textModel?.onCancel != null,
+                    child: Expanded(
+                      child: OutlinedButton(
+                        onPressed: () {},
+                        child: Text('Não'),
+                      ),
+                    ),
+                  ),
+                  Visibility(
+                    visible: _textModel?.onCancel != null,
+                    child: SizedBox(width: 10),
+                  ),
+                  Expanded(
+                    child: Hero(
+                      tag: 'primary_button',
+                      child: ElevatedButton(
+                        onPressed: () => _activityService.next(_textModel),
+                        child: Text(
+                          _textModel?.onCancel != null ? 'Sim' : 'Continuar',
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

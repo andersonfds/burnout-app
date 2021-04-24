@@ -1,5 +1,3 @@
-mixin ActivityBase {
-  late int? id;
-  late int? goNext;
+mixin StepBase {
   late String startPage;
 }
