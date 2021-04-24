@@ -28,7 +28,7 @@ class ActivityService extends BaseService implements IActivityService {
   }
 
   @override
-  Future<void> handleAction(StepBase? step) async {
+  Future<void> handleAction(String action, StepBase? step) async {
     if (step?.startPage != null) {
       Get.offNamedUntil(
         step!.startPage,
@@ -42,7 +42,7 @@ class ActivityService extends BaseService implements IActivityService {
   Future<void> startActivity(String? id) async {
     final steps = await downloadActivity(id);
     if (steps?.values?.isNotEmpty == true) {
-      await handleAction(steps?.first);
+      await handleAction('continue', steps?.first);
     }
   }
 
@@ -54,7 +54,12 @@ class ActivityService extends BaseService implements IActivityService {
       final newIndex = index + 1;
       if (newIndex < cachedSteps!.values!.length) {
         final newItem = cachedSteps!.values![newIndex];
-        await handleAction(newItem);
+        await handleAction('continue', newItem);
+      } else {
+        Get.offNamedUntil(
+          'activity/winner',
+          (route) => route.settings.name == 'home',
+        );
       }
     }
   }

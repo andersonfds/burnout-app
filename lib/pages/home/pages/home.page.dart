@@ -22,7 +22,7 @@ class HomePage extends GetView<HomeController> {
         () => HomeBottomActions(
           coins: controller.coins.value ?? 0,
           onUnlock: () {},
-          onPlay: controller.selected.value?.unlocked == true
+          onPlay: controller.selected.value?.unlocked != false
               ? controller.onActivityTap
               : null,
         ),

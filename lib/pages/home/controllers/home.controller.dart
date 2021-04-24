@@ -28,7 +28,7 @@ class HomeController extends GetxController
   void onInit() {
     super.onInit();
     loadBalance();
-    change(null, status: RxStatus.error());
+    loadActivities();
     getCurrentUser();
     setKeys([moneyValueChanged, homeShouldRefresh]);
     startListening();
@@ -62,9 +62,11 @@ class HomeController extends GetxController
   }
 
   onActivityTap() {
-    final activity = selected.value;
-    if (activity?.unlocked == true) {
-      _activityService.startActivity(activity?.id);
+    if (value?.isNotEmpty == true) {
+      final activity = selected.value ?? value?.first;
+      if (activity?.unlocked == true) {
+        _activityService.startActivity(activity?.id);
+      }
     }
   }
 

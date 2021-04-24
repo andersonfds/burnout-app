@@ -10,7 +10,7 @@ abstract class IActivityService {
 
   Future<void> next(StepBase? current);
 
-  Future<void> handleAction(StepBase step);
+  Future<void> handleAction(String action, StepBase step);
 
   Future<void> startActivity(String? id);
 }
