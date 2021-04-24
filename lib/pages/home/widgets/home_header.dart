@@ -12,25 +12,28 @@ class HomeHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(
-            child: Text(
-              'Olá, ${user?.firstName}',
-              style: Get.textTheme?.headline5?.apply(
-                color: Get.theme?.primaryColor,
+    return SafeArea(
+      bottom: false,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Text(
+                'Olá, ${user?.firstName}',
+                style: Get.textTheme?.headline5?.apply(
+                  color: Get.theme?.primaryColor,
+                ),
+                maxLines: 1,
               ),
-              maxLines: 1,
             ),
-          ),
-          CircleAvatar(
-            backgroundColor: Get.theme?.primaryColor,
-            child: Text('${user?.initials}'),
-          ),
-        ],
+            CircleAvatar(
+              backgroundColor: Get.theme?.primaryColor,
+              child: Text('${user?.initials}'),
+            ),
+          ],
+        ),
       ),
     );
   }

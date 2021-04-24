@@ -18,10 +18,10 @@ class ActivityService extends BaseService implements IActivityService {
 
   @override
   Future<StepList?> downloadActivity(String? id) async {
-    if (id != null && cachedSteps?.id == id) {
-      print('value cached!');
-      return cachedSteps;
-    }
+    // if (id != null && cachedSteps?.id == id) {
+    //   print('value cached!');
+    //   return cachedSteps;
+    // }
     final cache = await _repository.downloadActivity(id);
     cachedSteps = cache;
     return cache;
@@ -47,14 +47,18 @@ class ActivityService extends BaseService implements IActivityService {
   }
 
   @override
-  Future<void> next(StepBase? current) async {
+  Future<void> next(StepBase? current, [String? action = 'continue']) async {
+    if (action == 'back') {
+      Get.back();
+      return;
+    }
     final index = cachedSteps?.values?.indexOf(current);
     print(index);
     if (index != null && index >= 0) {
       final newIndex = index + 1;
       if (newIndex < cachedSteps!.values!.length) {
         final newItem = cachedSteps!.values![newIndex];
-        await handleAction('continue', newItem);
+        await handleAction(action ?? 'continue', newItem);
       } else {
         Get.offNamedUntil(
           'activity/winner',

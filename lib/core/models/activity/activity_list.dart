@@ -1,3 +1,4 @@
+import 'package:app/core/models/activity/options.activity.model.dart';
 import 'package:app/core/models/activity/text.activity.model.dart';
 import 'package:app/core/models/base/activity_base.dart';
 
@@ -18,6 +19,8 @@ class StepList {
     switch (json['type']) {
       case 'text':
         return TextActivityModel().fill(content);
+      case 'options':
+        return OptionsActivityModel().fill(content);
       default:
         return null;
     }

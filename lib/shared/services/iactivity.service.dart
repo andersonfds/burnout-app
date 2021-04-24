@@ -8,7 +8,7 @@ abstract class IActivityService {
   /// downloads the activity
   Future<StepList?> downloadActivity(String? id);
 
-  Future<void> next(StepBase? current);
+  Future<void> next(StepBase? current, [String? action = 'continue']);
 
   Future<void> handleAction(String action, StepBase step);
 

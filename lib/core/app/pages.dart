@@ -39,7 +39,7 @@ List<GetPage> getPages() => [
       ),
       GetPage(
         name: 'activity/selection',
-        page: () => ActivitySelectionPage(),
+        page: () => ActivityOptionPage(),
         curve: Curves.easeIn,
         transition: Transition.rightToLeft,
       ),

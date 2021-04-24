@@ -57,7 +57,8 @@ class _ActivityTextPageState extends State<ActivityTextPage> {
                     visible: _textModel?.onCancel != null,
                     child: Expanded(
                       child: OutlinedButton(
-                        onPressed: () {},
+                        onPressed: () => _activityService.next(
+                            _textModel, _textModel?.onCancel),
                         child: Text('Não'),
                       ),
                     ),
@@ -70,7 +71,8 @@ class _ActivityTextPageState extends State<ActivityTextPage> {
                     child: Hero(
                       tag: 'primary_button',
                       child: ElevatedButton(
-                        onPressed: () => _activityService.next(_textModel),
+                        onPressed: () => _activityService.next(
+                            _textModel, _textModel?.onAccept),
                         child: Text(
                           _textModel?.onCancel != null ? 'Sim' : 'Continuar',
                         ),

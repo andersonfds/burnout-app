@@ -33,11 +33,15 @@ abstract class NetworkRepository<T extends BaseModel> extends GetConnect {
   }
 
   FutureOr<Request<Object?>> requestModifier(Request<Object?> request) {
-    final AuthModel? auth = AuthModel().fill(_box.read('user'));
+    final userData = _box.read('user');
 
-    request.headers.addAll({
-      HttpHeaders.authorizationHeader: 'Bearer ${auth?.token}',
-    });
+    if (userData != null) {
+      final AuthModel? auth = AuthModel().fill(_box.read('user'));
+
+      request.headers.addAll({
+        HttpHeaders.authorizationHeader: 'Bearer ${auth?.token}',
+      });
+    }
 
     return request;
   }

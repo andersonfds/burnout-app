@@ -62,7 +62,7 @@ class LoginPage extends GetView<LoginController> {
                           TextFormField(
                             onChanged: (value) => controller.authDto
                                 .update((val) => val?.password = value),
-                            obscureText: true,
+                            obscureText: controller.obscureText.value,
                             textInputAction: TextInputAction.done,
                             decoration: InputDecoration(
                               labelText: 'Senha',
