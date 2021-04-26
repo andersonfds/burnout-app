@@ -19,4 +19,14 @@ class UserService extends BaseService implements IUserService {
   Future<int?> getBalance() {
     return _userRepository.getBalance();
   }
+
+  @override
+  Future<bool> resend(String email) {
+    return _userRepository.resend(email);
+  }
+
+  @override
+  Future<bool> verify(String email, String code) {
+    return _userRepository.verify(email, code);
+  }
 }

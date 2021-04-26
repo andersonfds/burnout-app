@@ -23,4 +23,11 @@ class ActivityRepository extends NetworkRepository<ActivityModel>
 
   @override
   ActivityModel get model => ActivityModel();
+
+  @override
+  Future<bool> unlock(String? id) async {
+    final result = await httpClient.post('activity/$id/unlock');
+    if (result.isOk) return result.body['unlockStatus'];
+    return false;
+  }
 }

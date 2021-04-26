@@ -7,6 +7,7 @@ class UserModel with BaseModel {
   final String? fullName;
   final String? initials;
   final String? email;
+  final bool? verified;
 
   UserModel({
     this.id,
@@ -15,6 +16,7 @@ class UserModel with BaseModel {
     this.fullName,
     this.initials,
     this.email,
+    this.verified,
   });
 
   @override
@@ -27,6 +29,7 @@ class UserModel with BaseModel {
       lastName: json['lastName'],
       fullName: json['fullName'],
       initials: json['initials'],
+      verified: json['verified'],
     );
   }
 
@@ -38,5 +41,6 @@ class UserModel with BaseModel {
         'lastName': lastName,
         'fullName': fullName,
         'initials': initials,
+        'verified': verified,
       };
 }

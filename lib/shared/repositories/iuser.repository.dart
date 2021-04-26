@@ -7,4 +7,8 @@ abstract class IUserRepository {
   Future<Either<ValidationModel, UserModel>> create(CreateUserDto user);
 
   Future<int?> getBalance();
+
+  Future<bool> verify(String email, String code);
+
+  Future<bool> resend(String email);
 }

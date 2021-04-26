@@ -17,7 +17,7 @@ class SignupController extends GetxController {
   }
 
   onSuccess(UserModel user) {
-    Get.offAllNamed('login');
+    Get.offAllNamed('signup/confirm', arguments: user.email);
   }
 
   changePasswordVisibility() {

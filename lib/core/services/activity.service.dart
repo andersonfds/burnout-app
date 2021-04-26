@@ -18,10 +18,10 @@ class ActivityService extends BaseService implements IActivityService {
 
   @override
   Future<StepList?> downloadActivity(String? id) async {
-    // if (id != null && cachedSteps?.id == id) {
-    //   print('value cached!');
-    //   return cachedSteps;
-    // }
+    if (id != null && cachedSteps?.id == id) {
+      print('value cached!');
+      return cachedSteps;
+    }
     final cache = await _repository.downloadActivity(id);
     cachedSteps = cache;
     return cache;
@@ -66,5 +66,10 @@ class ActivityService extends BaseService implements IActivityService {
         );
       }
     }
+  }
+
+  @override
+  Future<bool> unlock(String? id) {
+    return _repository.unlock(id);
   }
 }

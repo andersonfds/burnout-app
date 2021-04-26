@@ -8,9 +8,15 @@ abstract class IActivityService {
   /// downloads the activity
   Future<StepList?> downloadActivity(String? id);
 
+  /// calls the next step of the game
   Future<void> next(StepBase? current, [String? action = 'continue']);
 
+  /// handles actions for a step
   Future<void> handleAction(String action, StepBase step);
 
+  /// starts an step by id
   Future<void> startActivity(String? id);
+
+  /// unlocks the activity
+  Future<bool> unlock(String? id);
 }

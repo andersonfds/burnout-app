@@ -126,16 +126,22 @@ class _WaveSliderState extends State<WaveSlider>
           ),
           child: GestureDetector(
             child: Container(
-              width: _sliderWidth,
-              height: widget.sliderHeight,
-              child: CustomPaint(
-                painter: WavePainter(
-                  color: widget.color,
-                  sliderPosition: _dragPosition,
-                  dragPercentage: _dragPercentage,
-                  sliderState: _slideController.state,
-                  animationProgress: _slideController.progress,
-                  displayTrackball: widget.displayTrackball,
+              width: double.infinity,
+              height: widget.sliderHeight * 2,
+              color: Colors.transparent,
+              alignment: Alignment.topCenter,
+              child: Container(
+                width: _sliderWidth,
+                height: widget.sliderHeight,
+                child: CustomPaint(
+                  painter: WavePainter(
+                    color: widget.color,
+                    sliderPosition: _dragPosition,
+                    dragPercentage: _dragPercentage,
+                    sliderState: _slideController.state,
+                    animationProgress: _slideController.progress,
+                    displayTrackball: widget.displayTrackball,
+                  ),
                 ),
               ),
             ),

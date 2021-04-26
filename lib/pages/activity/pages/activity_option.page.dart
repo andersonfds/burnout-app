@@ -26,6 +26,21 @@ class _ActivityOptionPageState extends State<ActivityOptionPage> {
     setState(() {});
   }
 
+  _handleMultipleSelection(OptionItem? opt) {
+    if (values.contains(opt?.value)) {
+      values.remove(opt?.value);
+    } else {
+      values.add(opt?.value);
+    }
+    setState(() {});
+  }
+
+  _handleSingleSelection(OptionItem? item) {
+    values.clear();
+    values.add(item?.value);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,12 +61,12 @@ class _ActivityOptionPageState extends State<ActivityOptionPage> {
                         option: option,
                         selected: values.contains(option?.value),
                         onChanged: (opt) {
-                          if (values.contains(opt?.value)) {
-                            values.remove(opt?.value);
-                          } else {
-                            values.add(opt?.value);
+                          switch (_selectionModel?.mode) {
+                            case 'multiple':
+                              return _handleMultipleSelection(option);
+                            case 'single':
+                              return _handleSingleSelection(option);
                           }
-                          setState(() {});
                         },
                       ),
                     );

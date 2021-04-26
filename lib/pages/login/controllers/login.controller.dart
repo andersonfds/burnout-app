@@ -13,19 +13,6 @@ class LoginController extends GetxController {
   Rx<ValidationModel?> errors = Rx(null);
   final IAuthService _authService = Get.find();
 
-  @override
-  void onInit() {
-    super.onInit();
-    // Configuring the status bar to be bright
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarBrightness: Brightness.light,
-      statusBarIconBrightness: Brightness.light,
-      systemNavigationBarColor: Get.theme?.canvasColor,
-      systemNavigationBarIconBrightness: Brightness.light,
-    ));
-  }
-
   String? emailError() => errors.value?.getFirstError('identifier');
 
   String? passwordError() => errors.value?.getFirstError('password');
@@ -40,7 +27,11 @@ class LoginController extends GetxController {
   }
 
   onSuccess(AuthModel? auth) {
-    Get.offAllNamed('home');
+    if (auth?.user?.verified == true) {
+      Get.offAllNamed('home');
+    } else {
+      Get.toNamed('signup/confirm', arguments: auth?.user?.email);
+    }
   }
 
   onLogin() async {

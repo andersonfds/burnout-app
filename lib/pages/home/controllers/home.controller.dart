@@ -4,11 +4,15 @@ import 'package:app/shared/mixins/messaging_channel.mixin.dart';
 import 'package:app/shared/services/iactivity.service.dart';
 import 'package:app/shared/services/iauth.service.dart';
 import 'package:app/shared/services/iuser.service.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class HomeController extends GetxController
     with StateMixin<List<ActivityModel>?>, MessagingChannel {
+  // controllers
+  final carousel = CarouselController();
+
   // constants
   static const moneyValueChanged = 'MONEY_VALUE_CHANGED';
   static const homeShouldRefresh = 'HOME_SHOULD_REFRESH';
@@ -21,8 +25,9 @@ class HomeController extends GetxController
 
   // observables
   Rx<AuthModel?> user = Rx(null);
-  Rx<ActivityModel?> selected = Rx(null);
+  Rx<int> selected = 0.obs;
   Rx<int?> coins = 0.obs;
+  Rx<bool> loading = false.obs;
 
   @override
   void onInit() {
@@ -52,9 +57,10 @@ class HomeController extends GetxController
   loadActivities() {
     change(null, status: RxStatus.loading());
     _activityService.getAll().then((value) {
-      if (value?.isNotEmpty == true)
+      if (value?.isNotEmpty == true) {
+        selected.refresh();
         change(value, status: RxStatus.success());
-      else
+      } else
         change(null, status: RxStatus.empty());
     }).catchError((e) {
       change(null, status: RxStatus.error());
@@ -62,11 +68,33 @@ class HomeController extends GetxController
   }
 
   onActivityTap() {
-    if (value?.isNotEmpty == true) {
-      final activity = selected.value ?? value?.first;
-      if (activity?.unlocked == true) {
-        _activityService.startActivity(activity?.id);
+    if (isNotEmpty) {
+      final activity = value![selected.value];
+      _activityService.startActivity(activity.id);
+    }
+  }
+
+  bool get isNotEmpty => value?.isNotEmpty == true;
+
+  bool get selectionUnlocked {
+    final selectedIndex = selected.value;
+
+    if (value?.isNotEmpty == true && value!.length > selectedIndex) {
+      return value![selectedIndex].unlocked;
+    }
+    return false;
+  }
+
+  onUnlockTap() async {
+    if (isNotEmpty) {
+      loading.value = true;
+      final activity = value![selected.value];
+      if (await _activityService.unlock(activity.id)) {
+        activity.unlocked = true;
+        refresh();
+        selected.refresh();
       }
+      loading.value = false;
     }
   }
 

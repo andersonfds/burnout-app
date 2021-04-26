@@ -30,4 +30,20 @@ class UserRepository extends NetworkRepository implements IUserRepository {
     if (response.isOk) return int.tryParse(response.body);
     return null;
   }
+
+  @override
+  Future<bool> resend(String email) async {
+    final response =
+        await httpClient.post('user/resend', body: {'email': email});
+    return response.hasError == false;
+  }
+
+  @override
+  Future<bool> verify(String email, String code) async {
+    final response = await httpClient.post('user/verify', body: {
+      'email': email,
+      'code': code,
+    });
+    return response.isOk;
+  }
 }

@@ -7,4 +7,7 @@ abstract class IActivityRepository {
 
   /// downloads the activity
   Future<StepList?> downloadActivity(String? activityId);
+
+  /// unlocks the activity
+  Future<bool> unlock(String? id);
 }

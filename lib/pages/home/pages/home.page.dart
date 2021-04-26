@@ -21,10 +21,10 @@ class HomePage extends GetView<HomeController> {
       bottomNavigationBar: Obx(
         () => HomeBottomActions(
           coins: controller.coins.value ?? 0,
-          onUnlock: () {},
-          onPlay: controller.selected.value?.unlocked != false
-              ? controller.onActivityTap
-              : null,
+          onUnlock: controller.onUnlockTap,
+          onPlay: controller.onActivityTap,
+          locked: !controller.selectionUnlocked,
+          loading: controller.loading.value,
         ),
       ),
       body: SafeArea(
@@ -34,8 +34,9 @@ class HomePage extends GetView<HomeController> {
             Expanded(
               child: controller.obx(
                 (state) => CarouselSlider.builder(
+                  carouselController: controller.carousel,
                   options: getOptions((index, reason) {
-                    controller.selected.value = state?[index];
+                    controller.selected.value = index;
                   }),
                   itemCount: state?.length ?? 0,
                   itemBuilder: (context, index, index2) => HomeActivityCard(

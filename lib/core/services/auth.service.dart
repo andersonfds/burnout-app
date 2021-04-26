@@ -19,7 +19,11 @@ class AuthService extends BaseService implements IAuthService {
     // Making a request to the authentication repository
     final result = await _authRepository.authenticate(authDto);
     // saving on the local storage
-    result.fold((l) => null, (r) => box.write('user', r?.asMap()));
+    result.fold((l) => null, (r) {
+      if (r?.user?.verified == true) {
+        box.write('user', r?.asMap());
+      }
+    });
     // returning the result
     return result;
   }

@@ -25,11 +25,11 @@ List<GetPage> getPages() => [
         transition: Transition.rightToLeftWithFade,
       ),
       GetPage(
-        name: 'activity/yesNo',
-        page: () => ActivityYesNoPage(),
-        binding: ActivityYesNoBindings(),
-        curve: Curves.easeIn,
-        transition: Transition.rightToLeft,
+        name: 'signup/confirm',
+        page: () => ConfirmPage(),
+        binding: ConfirmBindings(),
+        curve: Curves.ease,
+        transition: Transition.rightToLeftWithFade,
       ),
       GetPage(
         name: 'activity/image',
@@ -52,6 +52,12 @@ List<GetPage> getPages() => [
       GetPage(
         name: 'activity/text',
         page: () => ActivityTextPage(),
+        curve: Curves.easeIn,
+        transition: Transition.rightToLeft,
+      ),
+      GetPage(
+        name: 'activity/burnout',
+        page: () => BurnoutActivityPage(),
         curve: Curves.easeIn,
         transition: Transition.rightToLeft,
       ),
