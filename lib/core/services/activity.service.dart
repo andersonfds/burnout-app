@@ -61,7 +61,7 @@ class ActivityService extends BaseService implements IActivityService {
         await handleAction(action ?? 'continue', newItem);
       } else {
         Get.offNamedUntil(
-          'activity/winner',
+          'activity/results',
           (route) => route.settings.name == 'home',
         );
       }

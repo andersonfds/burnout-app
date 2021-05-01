@@ -50,6 +50,12 @@ List<GetPage> getPages() => [
         transition: Transition.rightToLeft,
       ),
       GetPage(
+        name: 'activity/results',
+        page: () => ActivityLevelStress(),
+        curve: Curves.easeIn,
+        transition: Transition.rightToLeft,
+      ),
+      GetPage(
         name: 'activity/text',
         page: () => ActivityTextPage(),
         curve: Curves.easeIn,
