@@ -6,12 +6,16 @@ class BurnoutActivityModel with BaseModel, StepBase {
   String? onAccept;
 
   BurnoutActivityModel({
+    String? id,
     this.question,
     this.onAccept,
-  });
+  }) {
+    super.id = id;
+  }
 
   @override
   BurnoutActivityModel fill(dynamic json) => BurnoutActivityModel(
+        id: this.id,
         question: json['question'],
         onAccept: json['onAccept'],
       );

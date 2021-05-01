@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'base/base.service.dart';
 
 class ActivityService extends BaseService implements IActivityService {
+  final Map<String?, dynamic> _data = {};
   final IActivityRepository _repository = Get.find();
   StepList? cachedSteps;
 
@@ -40,6 +41,7 @@ class ActivityService extends BaseService implements IActivityService {
 
   @override
   Future<void> startActivity(String? id) async {
+    _data.clear();
     final steps = await downloadActivity(id);
     if (steps?.values?.isNotEmpty == true) {
       await handleAction('continue', steps?.first);
@@ -47,13 +49,16 @@ class ActivityService extends BaseService implements IActivityService {
   }
 
   @override
-  Future<void> next(StepBase? current, [String? action = 'continue']) async {
+  Future<void> next(StepBase? current,
+      [String? action = 'continue', dynamic data]) async {
     if (action == 'back') {
       Get.back();
       return;
     }
+    if (data != null) {
+      _data.addAll({current?.id: data});
+    }
     final index = cachedSteps?.values?.indexOf(current);
-    print(index);
     if (index != null && index >= 0) {
       final newIndex = index + 1;
       if (newIndex < cachedSteps!.values!.length) {

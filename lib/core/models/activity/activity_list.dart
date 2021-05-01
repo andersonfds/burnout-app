@@ -19,11 +19,11 @@ class StepList {
     final content = json['content'];
     switch (json['type']) {
       case 'text':
-        return TextActivityModel().fill(content);
+        return TextActivityModel(id: json['id']).fill(content);
       case 'options':
         return OptionsActivityModel().fill(content);
       case 'burnout':
-        return BurnoutActivityModel().fill(content);
+        return BurnoutActivityModel(id: json['id']).fill(content);
       default:
         return null;
     }
