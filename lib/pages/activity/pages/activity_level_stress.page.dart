@@ -44,12 +44,9 @@ class _ActivityLevelStressState extends State<ActivityLevelStress> {
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Hero(
-                tag: 'primary_button',
-                child: ElevatedButton(
-                  onPressed: Get.back,
-                  child: Text('Continuar'),
-                ),
+              child: ElevatedButton(
+                onPressed: () => Get.back(result: 'next'),
+                child: Text('Continuar'),
               ),
             ),
           ],

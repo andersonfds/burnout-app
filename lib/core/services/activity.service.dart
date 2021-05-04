@@ -65,10 +65,15 @@ class ActivityService extends BaseService implements IActivityService {
         final newItem = cachedSteps!.values![newIndex];
         await handleAction(action ?? 'continue', newItem);
       } else {
-        Get.offNamedUntil(
-          'activity/results',
-          (route) => route.settings.name == 'home',
-        );
+        final step = await calculateResult();
+        final page = step?.startPage;
+        if (page != null) {
+          Get.offNamedUntil(
+            step!.startPage,
+            (route) => route.settings.name == 'home',
+          );
+        } else
+          Get.back();
       }
     }
   }
@@ -76,5 +81,10 @@ class ActivityService extends BaseService implements IActivityService {
   @override
   Future<bool> unlock(String? id) {
     return _repository.unlock(id);
+  }
+
+  @override
+  Future<StepBase?> calculateResult() async {
+    return await _repository.calculateResult(_data);
   }
 }

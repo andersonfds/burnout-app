@@ -1,4 +1,5 @@
 import 'package:app/core/models/activity/activity.model.dart';
+import 'package:app/core/models/base/activity_base.dart';
 import 'package:app/core/models/models.dart';
 
 abstract class IActivityRepository {
@@ -10,4 +11,6 @@ abstract class IActivityRepository {
 
   /// unlocks the activity
   Future<bool> unlock(String? id);
+
+  Future<StepBase?> calculateResult(dynamic data);
 }

@@ -74,12 +74,9 @@ class _ActivityOptionPageState extends State<ActivityOptionPage> {
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Hero(
-                tag: 'primary_button',
-                child: ElevatedButton(
-                  onPressed: () => _activityService.next(_selectionModel),
-                  child: Text('Continuar'),
-                ),
+              child: ElevatedButton(
+                onPressed: () => _activityService.next(_selectionModel),
+                child: Text('Continuar'),
               ),
             ),
           ],

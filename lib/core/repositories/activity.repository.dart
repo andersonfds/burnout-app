@@ -1,4 +1,6 @@
 import 'package:app/core/config/environment.dart';
+import 'package:app/core/models/activity/result.activity.dart';
+import 'package:app/core/models/base/activity_base.dart';
 import 'package:app/core/models/models.dart';
 import 'package:app/shared/repositories/repositories.dart';
 import 'package:app/shared/utils/utils.dart';
@@ -29,5 +31,10 @@ class ActivityRepository extends NetworkRepository<ActivityModel>
     final result = await httpClient.post('activity/$id/unlock');
     if (result.isOk) return result.body['unlockStatus'];
     return false;
+  }
+
+  @override
+  Future<StepBase?> calculateResult(data) async {
+    return ResultActivityModel();
   }
 }

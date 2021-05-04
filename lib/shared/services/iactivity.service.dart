@@ -20,4 +20,7 @@ abstract class IActivityService {
 
   /// unlocks the activity
   Future<bool> unlock(String? id);
+
+  /// Calculates the result
+  Future<StepBase?> calculateResult();
 }

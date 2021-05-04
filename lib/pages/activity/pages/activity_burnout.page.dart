@@ -89,12 +89,9 @@ class _BurnoutActivityPageState extends State<BurnoutActivityPage> {
                   ),
                 ),
               ),
-              Hero(
-                tag: 'primary_button',
-                child: ElevatedButton(
-                  onPressed: () => _activityService.next(_activityModel),
-                  child: Text('Continuar'),
-                ),
+              ElevatedButton(
+                onPressed: () => _activityService.next(_activityModel),
+                child: Text('Continuar'),
               ),
             ],
           ),
