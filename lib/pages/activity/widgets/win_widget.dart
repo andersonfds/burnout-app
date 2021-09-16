@@ -16,8 +16,8 @@ class WinWidget extends StatelessWidget {
         ),
         Text(
           level,
-          style: Get.textTheme?.headline3?.apply(
-            color: Get.theme?.primaryColor,
+          style: Get.textTheme.headline3?.apply(
+            color: Get.theme.primaryColor,
           ),
         ),
       ],

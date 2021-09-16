@@ -36,9 +36,7 @@ class _ActivityTextPageState extends State<ActivityTextPage> {
             Expanded(
               child: Markdown(
                 data: _textModel?.description ?? '',
-                styleSheet:
-                    MarkdownStyleSheet.fromTheme(Get.theme ?? ThemeData())
-                        .copyWith(
+                styleSheet: MarkdownStyleSheet.fromTheme(Get.theme).copyWith(
                   blockquoteDecoration: BoxDecoration(
                     color: Colors.white10,
                     border: Border(

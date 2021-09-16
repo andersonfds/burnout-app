@@ -18,7 +18,7 @@ class DraggableTile extends StatelessWidget {
           height: 60,
           child: Material(
             borderRadius: BorderRadius.circular(16.0),
-            color: Get.theme?.primaryColor.withOpacity(0.05),
+            color: Get.theme.primaryColor.withOpacity(0.05),
           ),
         ),
         childWhenDragging: Material(
@@ -33,13 +33,13 @@ class DraggableTile extends StatelessWidget {
         ),
         child: Material(
           borderRadius: BorderRadius.circular(16.0),
-          color: Get.theme?.primaryColor.withOpacity(0.05),
+          color: Get.theme.primaryColor.withOpacity(0.05),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Text(
               'hello world',
-              style: Get.textTheme?.subtitle1?.apply(
-                color: Get.theme?.primaryColor,
+              style: Get.textTheme.subtitle1?.apply(
+                color: Get.theme.primaryColor,
               ),
             ),
           ),

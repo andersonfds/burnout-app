@@ -23,7 +23,7 @@ class ConfirmPage extends GetView<ConfirmController> {
                 Text(
                   'Digite o código que enviamos no seu e-mail',
                   textAlign: TextAlign.center,
-                  style: Get.textTheme?.bodyText1,
+                  style: Get.textTheme.bodyText1,
                 ),
                 SizedBox(height: 30),
                 Padding(

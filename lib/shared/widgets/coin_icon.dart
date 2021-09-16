@@ -16,7 +16,7 @@ class CoinIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final selectedColor = color ?? Get.theme?.primaryColor;
+    final selectedColor = color ?? Get.theme.primaryColor;
     return Row(
       mainAxisAlignment: mainAxisAlignment,
       children: [
@@ -27,7 +27,7 @@ class CoinIcon extends StatelessWidget {
         SizedBox(width: 10),
         Text(
           coins?.toString() ?? '0',
-          style: Get.textTheme?.button?.apply(
+          style: Get.textTheme.button?.apply(
             color: selectedColor,
             shadows: [
               Shadow(

@@ -6,7 +6,7 @@ class BubblesBackgroundPaint extends CustomPainter {
   late final Color primaryColor;
 
   BubblesBackgroundPaint() {
-    this.primaryColor = Get.theme?.primaryColor ?? Colors.black;
+    this.primaryColor = Get.theme.primaryColor;
   }
 
   @override
@@ -43,7 +43,7 @@ class LoginPage extends GetView<LoginController> {
                         children: [
                           Text(
                             'Entrar',
-                            style: Get.textTheme?.headline5,
+                            style: Get.textTheme.headline5,
                             textAlign: TextAlign.center,
                           ),
                           SizedBox(height: 10),

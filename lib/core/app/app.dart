@@ -13,7 +13,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       getPages: getPages(),
-      initialRoute: box.read('user') != null ? 'home' : 'login',
+      initialRoute: box.read('user') != null ? '/home' : '/login',
       initialBinding: AppBindings(),
       locale: Get.deviceLocale,
       fallbackLocale: Get.deviceLocale,

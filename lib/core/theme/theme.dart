@@ -18,8 +18,10 @@ lightTheme() {
     primaryColor: primaryColor,
     primaryColorBrightness: Brightness.light,
     accentColor: accentColor,
+    colorScheme: ColorScheme.dark(
+      primary: primaryColor,
+    ),
     accentColorBrightness: Brightness.light,
-    brightness: Brightness.dark,
     canvasColor: canvasColor,
     backgroundColor: lightBackground,
     textSelectionTheme: TextSelectionThemeData(
@@ -35,7 +37,7 @@ lightTheme() {
       iconTheme: IconThemeData(
         color: Colors.white,
       ),
-      textTheme: Get.textTheme?.apply(
+      textTheme: Get.textTheme.apply(
         bodyColor: Colors.white,
       ),
       color: canvasColor,

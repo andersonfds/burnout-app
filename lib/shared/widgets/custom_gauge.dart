@@ -54,7 +54,7 @@ class CustomGauge extends StatelessWidget {
         height: radius,
         child: Text(
           '${(value * 100).ceil()}',
-          style: Get.textTheme?.headline5,
+          style: Get.textTheme.headline5,
         ),
       ),
     );

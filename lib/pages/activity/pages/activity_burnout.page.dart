@@ -56,7 +56,7 @@ class _BurnoutActivityPageState extends State<BurnoutActivityPage> {
                     children: [
                       Text(
                         '${_activityModel?.question}',
-                        style: Get.textTheme?.headline5,
+                        style: Get.textTheme.headline5,
                       ),
                       SizedBox(height: 50),
                       Padding(
@@ -68,7 +68,7 @@ class _BurnoutActivityPageState extends State<BurnoutActivityPage> {
                       ),
                       WaveSlider(
                         sliderHeight: 30.0,
-                        color: Get.theme?.primaryColor ?? Colors.white,
+                        color: Get.theme.primaryColor,
                         onChangeEnd: (data) {
                           setState(() {
                             burnoutAmount = (data * 7).floor();

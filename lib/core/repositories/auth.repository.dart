@@ -25,7 +25,6 @@ class AuthRepository extends NetworkRepository<AuthModel>
     // Adding firebase token of the device
     final firebaseToken = await FirebaseMessaging.instance.getToken();
 
-    print(firebaseToken);
     request.addAll({'deviceId': firebaseToken});
 
     // authenticating

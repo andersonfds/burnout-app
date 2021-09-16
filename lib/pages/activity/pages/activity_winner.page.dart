@@ -22,7 +22,7 @@ class ActivityWinnerPage extends StatelessWidget {
                     WinWidget(),
                     Text(
                       'Parabéns! Você alcançou o Nível 1',
-                      style: Get.textTheme?.headline6,
+                      style: Get.textTheme.headline6,
                       textAlign: TextAlign.center,
                     ),
                     Center(

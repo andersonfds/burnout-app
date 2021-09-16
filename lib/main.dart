@@ -5,8 +5,8 @@ import 'package:get_storage/get_storage.dart';
 import 'core/app/app.dart';
 
 Future main() async {
-  await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await GetStorage.init();
   runApp(App());
 }

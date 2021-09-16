@@ -21,7 +21,7 @@ class HomeEmpty extends StatelessWidget {
             ),
             Text(
               'Nenhum dado foi encontrado',
-              style: Get.textTheme?.headline6,
+              style: Get.textTheme.headline6,
               textAlign: TextAlign.center,
             ),
           ],

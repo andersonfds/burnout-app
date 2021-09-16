@@ -22,14 +22,14 @@ class HomeHeader extends StatelessWidget {
             Expanded(
               child: Text(
                 'Olá, ${user?.firstName}',
-                style: Get.textTheme?.headline5?.apply(
-                  color: Get.theme?.primaryColor,
+                style: Get.textTheme.headline5?.apply(
+                  color: Get.theme.primaryColor,
                 ),
                 maxLines: 1,
               ),
             ),
             CircleAvatar(
-              backgroundColor: Get.theme?.primaryColor,
+              backgroundColor: Get.theme.primaryColor,
               child: Text('${user?.initials}'),
             ),
           ],

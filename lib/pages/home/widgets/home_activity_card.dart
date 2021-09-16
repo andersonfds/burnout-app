@@ -60,14 +60,14 @@ class HomeActivityCard extends StatelessWidget {
                             color: Colors.white,
                           ),
                           Material(
-                            color: Get.theme?.primaryColor,
+                            color: Get.theme.primaryColor,
                             shape: StadiumBorder(),
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 8.0),
                               child: Text(
                                 activity.flag ?? '',
-                                style: Get.textTheme?.button?.apply(
+                                style: Get.textTheme.button?.apply(
                                   color: Colors.black,
                                 ),
                               ),
@@ -80,15 +80,15 @@ class HomeActivityCard extends StatelessWidget {
                         children: [
                           Text(
                             activity.levelName ?? '',
-                            style: Get.textTheme?.overline,
+                            style: Get.textTheme.overline,
                           ),
                           Text(
                             activity.name ?? '',
-                            style: Get.textTheme?.headline6,
+                            style: Get.textTheme.headline6,
                           ),
                           Text(
                             activity.description ?? '',
-                            style: Get.textTheme?.caption,
+                            style: Get.textTheme.caption,
                           ),
                         ],
                       ),

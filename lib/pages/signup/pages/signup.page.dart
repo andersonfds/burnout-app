@@ -24,7 +24,7 @@ class SignupPage extends GetView<SignupController> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12.0),
                 child:
-                    Text('Informações básicas', style: Get.textTheme?.caption),
+                    Text('Informações básicas', style: Get.textTheme.caption),
               ),
               ObxValue<Rx<ValidationModel?>>(
                 (state) => TextFormField(
@@ -53,7 +53,7 @@ class SignupPage extends GetView<SignupController> {
               Divider(),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12.0),
-                child: Text('Autenticação', style: Get.textTheme?.caption),
+                child: Text('Autenticação', style: Get.textTheme.caption),
               ),
               ObxValue<Rx<ValidationModel?>>(
                 (state) => TextFormField(

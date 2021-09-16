@@ -25,7 +25,7 @@ class HomeError extends StatelessWidget {
             ),
             Text(
               'Não foi possível carregar os dados',
-              style: Get.textTheme?.headline6,
+              style: Get.textTheme.headline6,
               textAlign: TextAlign.center,
             ),
             Padding(

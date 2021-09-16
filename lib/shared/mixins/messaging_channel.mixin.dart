@@ -11,17 +11,15 @@ mixin MessagingChannel {
   }
 
   startListening() {
-    FirebaseMessaging.instance.getToken().then((token) {
-      _subscription = FirebaseMessaging.onMessage.listen((message) {
-        if (message.data.containsKey('data')) {
-          final data = message.data['action'];
-          if (data != null && data is String) {
-            if (_keys.contains(data)) {
-              onMessage(data, message.data['data']);
-            }
+    _subscription = FirebaseMessaging.onMessage.listen((message) {
+      if (message.data.containsKey('data')) {
+        final data = message.data['action'];
+        if (data != null && data is String) {
+          if (_keys.contains(data)) {
+            onMessage(data, message.data['data']);
           }
         }
-      });
+      }
     });
   }
 

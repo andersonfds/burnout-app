@@ -16,8 +16,8 @@ class GradientContainer extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Get.theme?.primaryColor ?? Colors.transparent,
-            Get.theme?.accentColor ?? Colors.transparent,
+            Get.theme.primaryColor,
+            Get.theme.accentColor,
           ],
         ),
       ),

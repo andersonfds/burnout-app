@@ -2,8 +2,6 @@ import 'package:app/core/models/auth.model.dart';
 import 'package:app/core/models/dto/create_auth.dto.dart';
 import 'package:app/core/models/validation.model.dart';
 import 'package:app/shared/services/iauth.service.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
@@ -35,11 +33,16 @@ class LoginController extends GetxController {
   }
 
   onLogin() async {
-    errors.value = null;
-    isLoading.value = true;
-    authDto.refresh();
-    final response = await _authService.authenticate(authDto.value);
-    isLoading.value = false;
-    response.fold(onError, onSuccess);
+    try {
+      errors.value = null;
+      isLoading.value = true;
+      authDto.refresh();
+      final response = await _authService.authenticate(authDto.value);
+      response.fold(onError, onSuccess);
+    } finally {
+      isLoading.value = false;
+      isLoading.refresh();
+      authDto.refresh();
+    }
   }
 }

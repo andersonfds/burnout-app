@@ -17,10 +17,9 @@ class AppBindings extends Bindings {
       statusBarColor: Colors.transparent,
       statusBarBrightness: Brightness.light,
       statusBarIconBrightness: Brightness.light,
-      systemNavigationBarColor: Get.theme?.canvasColor,
+      systemNavigationBarColor: Get.theme.canvasColor,
       systemNavigationBarIconBrightness: Brightness.light,
     ));
-
     Get.put<GetStorage>(GetStorage());
     // Repositories
     Get.lazyPut<IActivityRepository>(() => ActivityRepository());

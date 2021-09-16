@@ -20,8 +20,7 @@ class ActivityTile extends StatelessWidget {
     return Material(
       clipBehavior: Clip.antiAlias,
       borderRadius: BorderRadius.circular(16.0),
-      color:
-          Get.theme?.primaryColor.withOpacity(selected == true ? 0.15 : 0.05),
+      color: Get.theme.primaryColor.withOpacity(selected == true ? 0.15 : 0.05),
       child: InkWell(
         onTap: () => onChanged?.call(option),
         child: Padding(

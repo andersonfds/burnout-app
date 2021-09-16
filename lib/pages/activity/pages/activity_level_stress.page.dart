@@ -30,12 +30,12 @@ class _ActivityLevelStressState extends State<ActivityLevelStress> {
                       Text(
                         'Muito estressado',
                         textAlign: TextAlign.center,
-                        style: Get.textTheme?.headline6,
+                        style: Get.textTheme.headline6,
                       ),
                       Text(
                         'Você fez 10 pontos',
                         textAlign: TextAlign.center,
-                        style: Get.textTheme?.bodyText1,
+                        style: Get.textTheme.bodyText1,
                       ),
                     ],
                   ),
