@@ -90,7 +90,13 @@ class _BurnoutActivityPageState extends State<BurnoutActivityPage> {
                 ),
               ),
               ElevatedButton(
-                onPressed: () => _activityService.next(_activityModel),
+                onPressed: () {
+                  _activityService.next(
+                    _activityModel,
+                    'continue',
+                    burnoutAmount,
+                  );
+                },
                 child: Text('Continuar'),
               ),
             ],
