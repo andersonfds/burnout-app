@@ -20,7 +20,6 @@ class ActivityService extends BaseService implements IActivityService {
   @override
   Future<StepList?> downloadActivity(String? id) async {
     if (id != null && cachedSteps?.id == id) {
-      print('value cached!');
       return cachedSteps;
     }
     final cache = await _repository.downloadActivity(id);
@@ -33,7 +32,7 @@ class ActivityService extends BaseService implements IActivityService {
     if (step?.startPage != null) {
       Get.offNamedUntil(
         step!.startPage,
-        (route) => route.settings.name == 'home',
+        (route) => route.settings.name == '/home',
         arguments: step,
       );
     }
@@ -70,7 +69,8 @@ class ActivityService extends BaseService implements IActivityService {
         if (page != null) {
           Get.offNamedUntil(
             step!.startPage,
-            (route) => route.settings.name == 'home',
+            (route) => route.settings.name == '/home',
+            arguments: step,
           );
         } else
           Get.back();

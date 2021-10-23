@@ -3,7 +3,12 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class WinWidget extends StatelessWidget {
-  final String level = 'Nível 1';
+  final int? levelNumber;
+
+  const WinWidget({
+    Key? key,
+    this.levelNumber,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +20,7 @@ class WinWidget extends StatelessWidget {
           repeat: false,
         ),
         Text(
-          level,
+          'Nível $levelNumber',
           style: Get.textTheme.headline3?.apply(
             color: Get.theme.primaryColor,
           ),

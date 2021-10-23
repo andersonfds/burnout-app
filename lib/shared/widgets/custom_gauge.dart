@@ -39,8 +39,13 @@ class _CustomGaugePaint extends CustomPainter {
 }
 
 class CustomGauge extends StatelessWidget {
-  final double value = 0.1;
-  final double radius = 120;
+  final double value;
+  final double radius;
+
+  CustomGauge({
+    this.value = 0,
+    this.radius = 120,
+  });
 
   @override
   Widget build(BuildContext context) {

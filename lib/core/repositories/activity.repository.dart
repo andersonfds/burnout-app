@@ -35,6 +35,10 @@ class ActivityRepository extends NetworkRepository<ActivityModel>
 
   @override
   Future<StepBase?> calculateResult(data) async {
-    return ResultActivityModel();
+    return ResultActivityModel(
+      receivedPoints: 1100,
+      burnoutIndex: 30,
+      burnoutValue: 'Unknown status',
+    );
   }
 }
