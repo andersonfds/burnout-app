@@ -8,12 +8,9 @@ Setting up:
 
 Then choose the version:
 
-    fvm install stable
+    fvm use 2.2.0
 
-Then you should run:
-
-    fvm use stable
-
-Now get the packages:
+It might ask you to download flutter 2.2.0 if you haven't installed it yet. Just confirm with yes. Then run:
 
     fvm flutter pub get
+
